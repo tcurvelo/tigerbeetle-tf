@@ -16,7 +16,7 @@ data "aws_ami" "ubuntu" {
 }
 
 data "template_file" "cloud_init" {
-    template = file("${path.module}/templates/tigerbeetle.tpl")
+    template = file(var.cloud_init_template_path)
 }
 
 # EC2 instances (TigerBeetle replicas)

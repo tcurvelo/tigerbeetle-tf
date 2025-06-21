@@ -16,3 +16,8 @@ provider "aws" {
 }
 
 provider "template" { }
+
+module "aws" {
+  source = "./modules/aws"
+  cloud_init_template_path = "./templates/tigerbeetle.tpl"
+}
