@@ -15,14 +15,11 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
-data "template_file" "cloud_init" {
-    template = file(var.cloud_init_template_path)
-}
 
 # EC2 instances (TigerBeetle replicas)
 resource "aws_instance" "tigerbeetle" {
   count         = 1
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t2.medium"
-  user_data     = data.template_file.cloud_init.rendered
+  user_data     = local.cloud_init
 }

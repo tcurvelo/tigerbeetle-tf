@@ -5,7 +5,7 @@ terraform {
       version = "6.0.0-beta2"
     }
     template = {
-      source = "hashicorp/template"
+      source  = "hashicorp/template"
       version = "2.2.0"
     }
   }
@@ -15,9 +15,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-provider "template" { }
+provider "template" {}
 
 module "aws" {
   source = "./modules/aws"
-  cloud_init_template_path = "./templates/tigerbeetle.tpl"
 }
