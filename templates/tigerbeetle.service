@@ -13,6 +13,7 @@ Environment=TIGERBEETLE_REPLICA_COUNT=1
 Environment=TIGERBEETLE_REPLICA_INDEX=0
 Environment=TIGERBEETLE_CLUSTER_ID=0
 Environment=TIGERBEETLE_DATA_FILE=%S/tigerbeetle/0_0.tigerbeetle
+Environment=STATSD_ADDRESS=127.0.0.1:9125
 
 DevicePolicy=closed
 DynamicUser=true
@@ -36,7 +37,7 @@ StateDirectoryMode=700
 
 Type=exec
 ExecStartPre=/usr/local/bin/tigerbeetle-pre-start.sh
-ExecStart=/usr/local/bin/tigerbeetle start --cache-grid=${TIGERBEETLE_CACHE_GRID_SIZE} --addresses=${TIGERBEETLE_ADDRESSES} ${TIGERBEETLE_DATA_FILE}
+ExecStart=/usr/local/bin/tigerbeetle start --cache-grid=${TIGERBEETLE_CACHE_GRID_SIZE} --addresses=${TIGERBEETLE_ADDRESSES} --experimental --statsd=${STATSD_ADDRESS} ${TIGERBEETLE_DATA_FILE}
 
 [Install]
 WantedBy=multi-user.target

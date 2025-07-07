@@ -3,6 +3,7 @@ locals {
     "${path.module}/../../templates/cloud-init.tpl",
     {
       service   = indent(4, file("${path.module}/../../templates/tigerbeetle.service"))
+      statsd    = indent(4, file("${path.module}/../../templates/statsd-exporter.service"))
       pre_start = indent(4, file("${path.module}/../../templates/tigerbeetle-pre-start.sh"))
       install   = indent(4, file("${path.module}/../../templates/install.sh"))
     }

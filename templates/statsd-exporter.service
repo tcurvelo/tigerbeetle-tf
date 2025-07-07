@@ -1,0 +1,11 @@
+[Unit]
+Description=Prometheus StatsD Exporter
+After=network.target
+
+[Service]
+# Create dedicated user/group
+ExecStart=/usr/local/bin/statsd_exporter --statsd.listen-udp=:9125 --web.listen-address=:9102
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
